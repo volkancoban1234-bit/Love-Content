@@ -1,0 +1,108 @@
+function odemeyiDene() {
+
+    const dosyalar = document.getElementById("fotolar").files;
+    const sayi = dosyalar.length;
+
+    if (sayi < 10) {
+
+        const mesaj = document.getElementById("mesaj");
+
+        mesaj.innerHTML = `
+            ❌ İŞLEM REDDEDİLDİ<br>
+            <small>Yetersiz bakiye! 😂<br>
+            Minimum 10 fotoğraf gerekli.</small>
+        `;
+
+        mesaj.classList.remove("uyari");
+        void mesaj.offsetWidth;
+        mesaj.classList.add("uyari");
+
+        // POS benzeri "bip bip" sesi
+        const audio = new (window.AudioContext || window.webkitAudioContext)();
+
+        function bip(zaman, frekans) {
+            const oscillator = audio.createOscillator();
+            const gain = audio.createGain();
+
+            oscillator.type = "square";
+            oscillator.frequency.value = frekans;
+
+            gain.gain.setValueAtTime(0.15, zaman);
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                zaman + 0.18
+            );
+
+            oscillator.connect(gain);
+            gain.connect(audio.destination);
+
+            oscillator.start(zaman);
+            oscillator.stop(zaman + 0.18);
+        }
+
+        bip(audio.currentTime, 180);
+        bip(audio.currentTime + 0.25, 130);
+
+        // Telefon destekliyorsa titreşim
+        if (navigator.vibrate) {
+            navigator.vibrate([150, 80, 250]);
+        }
+
+        return;
+    }
+
+
+    // 10 FOTOĞRAF VE ÜZERİ
+    document.getElementById("kutu").innerHTML = `
+
+        <div class="basari">
+            <div class="tik">✓</div>
+
+            <h1>Ödeme Başarılı! 🎉❤️</h1>
+
+            <p style="font-size:24px;">
+                Buluşma kesinleşti! 🥰
+            </p>
+
+            <p>
+                ${sayi} fotoğraf ile ödeme kabul edildi. 📸
+            </p>
+
+            <p style="font-size:21px;">
+                Görüşürüz ❤️
+            </p>
+        </div>
+
+    `;
+
+    // Başarı sesi
+    const audio = new (window.AudioContext || window.webkitAudioContext)();
+
+    function basariSesi(zaman, frekans) {
+        const oscillator = audio.createOscillator();
+        const gain = audio.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.value = frekans;
+
+        gain.gain.setValueAtTime(0.12, zaman);
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            zaman + 0.3
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audio.destination);
+
+        oscillator.start(zaman);
+        oscillator.stop(zaman + 0.3);
+    }
+
+    basariSesi(audio.currentTime, 523);
+    basariSesi(audio.currentTime + 0.18, 659);
+    basariSesi(audio.currentTime + 0.36, 784);
+
+    if (navigator.vibrate) {
+        navigator.vibrate(200);
+    }
+}
