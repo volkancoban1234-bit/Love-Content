@@ -7,51 +7,72 @@ body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+
+    padding: 15px;
     overflow: hidden;
 }
 
 .kutu {
     width: 100%;
     max-width: 500px;
+
     background: white;
-    padding: 35px 25px;
+    padding: 30px 20px;
+
     border-radius: 25px;
+
     text-align: center;
+
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
     animation: ortayaCik 0.6s ease;
 }
 
 h1 {
     color: #e91e63;
+    font-size: clamp(24px, 7vw, 36px);
     margin-bottom: 15px;
 }
 
 p {
     color: #555;
     font-size: 18px;
+    line-height: 1.5;
 }
 
-.butunButonlar {
+
+/* EVET - HAYIR */
+
+.butonlar {
+    position: relative;
+
     display: flex;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+    min-height: 65px;
+
     margin-top: 30px;
-    position: relative;
-    min-height: 60px;
 }
 
-button {
+.butonlar button {
+    min-width: 120px;
+    padding: 14px 20px;
+
     border: none;
-    padding: 15px 30px;
     border-radius: 12px;
-    font-size: 18px;
+
+    font-size: 17px;
     font-weight: bold;
+
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .evet {
@@ -59,65 +80,133 @@ button {
     color: white;
 }
 
-.evet:hover {
-    transform: scale(1.05);
-}
-
 .hayir {
     background: #f44336;
     color: white;
-    position: absolute;
+
+    position: relative;
 }
 
-/* TARİH SAAT */
 
-.tarihSaat {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 25px;
+/* BUTONLAR MOBİLDE */
+
+@media (max-width: 400px) {
+
+    .butonlar {
+        gap: 10px;
+    }
+
+    .butonlar button {
+        min-width: 105px;
+        padding: 13px 15px;
+        font-size: 16px;
+    }
 }
+
+
+/* TARİH VE SAAT */
 
 input[type="date"],
-input[type="time"],
-input[type="file"] {
+input[type="time"] {
     width: 100%;
+
     padding: 14px;
+
+    margin: 8px 0;
+
     border: 2px solid #eee;
     border-radius: 12px;
-    font-size: 16px;
+
+    font-size: 17px;
 }
 
 .devam {
     width: 100%;
+
+    padding: 15px;
+
+    margin-top: 15px;
+
+    border: none;
+    border-radius: 12px;
+
     background: #e91e63;
     color: white;
-    margin-top: 20px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
 }
+
+
+/* FOTOĞRAF */
+
+.fotoAlan {
+    border: 2px dashed #e91e63;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    margin: 20px 0;
+
+    background: #fff5f8;
+}
+
+input[type="file"] {
+    width: 100%;
+    font-size: 14px;
+}
+
 
 /* MESAJ */
 
 #mesaj {
     color: #e91e63;
+
     font-weight: bold;
+
     min-height: 45px;
+
     line-height: 1.5;
+
     margin-top: 15px;
 }
 
 .uyari {
     animation: sallan 0.45s ease;
+
     color: #d60000 !important;
 }
 
 @keyframes sallan {
-    0%   { transform: translateX(0); }
-    20%  { transform: translateX(-10px); }
-    40%  { transform: translateX(10px); }
-    60%  { transform: translateX(-7px); }
-    80%  { transform: translateX(7px); }
-    100% { transform: translateX(0); }
+
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-7px);
+    }
+
+    80% {
+        transform: translateX(7px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
+
 
 /* BAŞARI */
 
@@ -128,12 +217,19 @@ input[type="file"] {
 .tik {
     width: 80px;
     height: 80px;
+
     margin: 0 auto 20px;
+
     border-radius: 50%;
+
     background: #4caf50;
+
     color: white;
+
     font-size: 55px;
+
     line-height: 80px;
+
     animation: buyu 0.5s ease;
 }
 
@@ -142,6 +238,7 @@ input[type="file"] {
 }
 
 @keyframes ortayaCik {
+
     from {
         opacity: 0;
         transform: scale(0.7);
@@ -154,6 +251,7 @@ input[type="file"] {
 }
 
 @keyframes buyu {
+
     0% {
         transform: scale(0);
     }
@@ -167,36 +265,30 @@ input[type="file"] {
     }
 }
 
-/* FOTOĞRAF ALANI */
 
-.fotoAlan {
-    border: 2px dashed #e91e63;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 20px;
-    background: #fff5f8;
-}
+/* ÇOK KÜÇÜK TELEFONLAR */
 
-.fotoAlan strong {
-    display: block;
-    margin-bottom: 15px;
-    color: #e91e63;
-}
+@media (max-width: 350px) {
 
-/* MOBİL */
-
-@media (max-width: 500px) {
+    body {
+        padding: 10px;
+    }
 
     .kutu {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
 
-    h1 {
-        font-size: 26px;
+    .butonlar {
+        gap: 8px;
     }
 
-    button {
+    .butonlar button {
+        min-width: 95px;
+        padding: 12px 10px;
+        font-size: 15px;
+    }
+
+    p {
         font-size: 16px;
-        padding: 13px 25px;
     }
-    }
+}
