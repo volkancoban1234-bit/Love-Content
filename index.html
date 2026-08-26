@@ -1,356 +1,356 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bir Soru ❤️</title>
+    <title>Bir Soru ❤️</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    overflow: hidden;
-}
-
-.kutu {
-    width: 100%;
-    max-width: 500px;
-    background: white;
-    border-radius: 25px;
-    padding: 35px 25px;
-    text-align: center;
-    box-shadow: 0 15px 50px rgba(0,0,0,.25);
-}
-
-h1 {
-    color: #e91e63;
-    margin-bottom: 25px;
-}
-
-p {
-    color: #555;
-    font-size: 18px;
-}
-
-.butonlar {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    position: relative;
-    min-height: 60px;
-}
-
-button {
-    border: none;
-    padding: 14px 30px;
-    border-radius: 12px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.evet {
-    background: #e91e63;
-    color: white;
-}
-
-.hayir {
-    background: #777;
-    color: white;
-    position: absolute;
-}
-
-input[type="date"],
-input[type="time"] {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    font-size: 17px;
-}
-
-.devam {
-    width: 100%;
-    background: #e91e63;
-    color: white;
-    margin-top: 15px;
-}
-
-.foto-alani {
-    border: 2px dashed #e91e63;
-    border-radius: 15px;
-    padding: 25px;
-    margin: 20px 0;
-}
-
-input[type="file"] {
-    width: 100%;
-}
-
-#mesaj {
-    color: #e91e63;
-    font-weight: bold;
-    min-height: 45px;
-    line-height: 1.5;
-}
-
-.uyari {
-    animation: sallan 0.45s ease;
-    color: #d60000 !important;
-}
-
-@keyframes sallan {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-10px); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(-7px); }
-    80% { transform: translateX(7px); }
-    100% { transform: translateX(0); }
-}
-
-.basari {
-    animation: ortayaCik 0.6s ease;
-}
-
-.tik {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: #4caf50;
-    color: white;
-    font-size: 55px;
-    line-height: 80px;
-    animation: buyu 0.5s ease;
-}
-
-@keyframes ortayaCik {
-    from {
-        opacity: 0;
-        transform: scale(.7);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes buyu {
-    0% { transform: scale(0); }
-    70% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-.soru {
-    animation: ortayaCik .5s ease;
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="kutu" id="kutu">
+    <main class="kutu" id="kutu">
 
-    <!-- 1. SORU -->
-    <div id="soru1" class="soru">
+        <!-- 1. SORU -->
+        <section id="soru1" class="ekran">
 
-        <h1>Benle buluşmak ister misin? ❤️</h1>
+            <div class="kalp">❤️</div>
 
-        <p>Çok önemli bir soru... 😌</p>
+            <h1>Benle buluşmak ister misin?</h1>
 
-        <div class="butonlar">
+            <p class="alt-yazi">
+                Sana çok önemli bir soru sormam gerekiyor... 😌
+            </p>
 
-            <button class="evet" onclick="evetDedim()">
-                Evet ❤️
-            </button>
+            <div class="buton-alani">
+
+                <button
+                    type="button"
+                    class="evet"
+                    onclick="evetDedim()">
+                    Evet ❤️
+                </button>
+
+                <button
+                    type="button"
+                    class="hayir"
+                    id="hayir"
+                    onclick="hayirKac()">
+                    Hayır 😐
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TARİH VE SAAT -->
+        <section id="tarih" class="ekran gizli">
+
+            <div class="emoji">🥰</div>
+
+            <h1>Ne zaman müsaitsin?</h1>
+
+            <p class="alt-yazi">
+                Bir tarih ve saat seç bakalım.
+            </p>
+
+            <div class="tarih-saat">
+
+                <label for="tarihSec">
+                    📅 Tarih
+                </label>
+
+                <input
+                    type="date"
+                    id="tarihSec">
+
+                <label for="saatSec">
+                    🕐 Saat
+                </label>
+
+                <input
+                    type="time"
+                    id="saatSec">
+
+            </div>
 
             <button
-                class="hayir"
-                id="hayir"
-                onmouseover="hayirKac()"
-                ontouchstart="hayirKac()">
-                Hayır 😐
+                type="button"
+                class="devam"
+                onclick="tarihSecildi()">
+                Seçtim ❤️
             </button>
 
-        </div>
-
-    </div>
+        </section>
 
 
-    <!-- TARİH SAAT -->
-    <div id="tarih" style="display:none;" class="soru">
+        <!-- TARİH ONAY -->
+        <section id="onay" class="ekran gizli">
 
-        <h1>Ne zaman müsaitsin? 🥰</h1>
+            <div class="emoji">👀</div>
 
-        <p>Bir tarih ve saat seç bakalım.</p>
+            <h1>Hmm...</h1>
 
-        <input type="date" id="tarihSec">
+            <p class="buyuk-yazi">
+                Seçiyorsun, bu gözüme batmadı değil. 😂
+            </p>
 
-        <input type="time" id="saatSec">
+            <p>
+                Sen <strong>"her tarih benim için uygundur"</strong>
+                demeliydin! 😤❤️
+            </p>
 
-        <button class="devam" onclick="tarihSecildi()">
-            Seçtim ❤️
-        </button>
+            <button
+                type="button"
+                class="devam"
+                onclick="odemeEkrani()">
+                Tamam tamam 😭
+            </button>
 
-    </div>
-
-
-    <!-- TARİH ONAY -->
-    <div id="onay" style="display:none;" class="soru">
-
-        <h1>Hmm... 👀</h1>
-
-        <p style="font-size:22px;">
-            Seçiyorsun bu gözüme batmadı değil 😂
-        </p>
-
-        <p>
-            Sen her tarih benim için uygundur demeliydin! 😤❤️
-        </p>
-
-        <button class="devam" onclick="odemeEkrani()">
-            Tamam tamam 😭
-        </button>
-
-    </div>
+        </section>
 
 
-    <!-- ÖDEME -->
-    <div id="odeme" style="display:none;" class="soru">
+        <!-- ÖDEME / FOTOĞRAF -->
+        <section id="odeme" class="ekran gizli">
 
-        <h1>Son Bir Şey... 💳</h1>
+            <div class="emoji">💳</div>
 
-        <p>
-            Buluşma rezervasyonunu tamamlamak için
-            fotoğraf yükle. 📸
-        </p>
+            <h1>Son Bir Şey...</h1>
 
-        <p>
-            <strong>Minimum 10 fotoğraf gerekli.</strong>
-        </p>
+            <p>
+                Buluşmayı kesinleştirmek için
+                fotoğraflarını yükle. 📸
+            </p>
 
-        <div class="foto-alani">
+            <p class="minimum">
+                Minimum <strong>10 fotoğraf</strong> gerekli.
+            </p>
 
-            <input
-                type="file"
-                id="fotolar"
-                accept="image/*"
-                multiple
-            >
+            <div class="foto-alani">
 
-        </div>
+                <div class="kamera">📸</div>
 
-        <button class="devam" onclick="odemeyiDene()">
-            💳 ÖDEME YAP
-        </button>
+                <label for="fotolar" class="dosya-butonu">
+                    Fotoğrafları Seç
+                </label>
 
-        <div id="mesaj"></div>
+                <input
+                    type="file"
+                    id="fotolar"
+                    accept="image/*"
+                    multiple
+                    onchange="fotoSayisiniGoster()">
 
-    </div>
+                <div id="fotoSayisi">
+                    Henüz fotoğraf seçilmedi.
+                </div>
 
-</div>
+            </div>
+
+            <button
+                type="button"
+                class="devam odeme-butonu"
+                onclick="odemeyiDene()">
+                💳 ÖDEME YAP
+            </button>
+
+            <div id="mesaj"></div>
+
+        </section>
+
+    </main>
 
 
 <script>
 
+/* =====================================================
+   1 — EVET BUTONU
+   ===================================================== */
 
-// HAYIR BUTONU KAÇIYOR
+function evetDedim() {
+
+    document.getElementById("soru1").classList.add("gizli");
+
+    document.getElementById("tarih").classList.remove("gizli");
+
+}
+
+
+/* =====================================================
+   2 — HAYIR BUTONU
+   TELEFON + BİLGİSAYAR UYUMLU
+   ===================================================== */
 
 function hayirKac() {
 
     const hayir = document.getElementById("hayir");
 
-    const maxX = Math.max(
-        0,
-        window.innerWidth - hayir.offsetWidth - 30
-    );
-
-    const maxY = Math.max(
-        0,
-        window.innerHeight - hayir.offsetHeight - 30
-    );
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    /*
+       fixed yapıyoruz.
+       Böylece buton ekranın içinde
+       herhangi bir yere kaçabilir.
+    */
 
     hayir.style.position = "fixed";
+
+    /*
+       Butonun boyutunu öğreniyoruz.
+       Ekranın dışına çıkmasını engelliyoruz.
+    */
+
+    const butonGenislik = hayir.offsetWidth;
+    const butonYukseklik = hayir.offsetHeight;
+
+    const kenarBosluk = 20;
+
+    const maxX =
+        window.innerWidth -
+        butonGenislik -
+        kenarBosluk;
+
+    const maxY =
+        window.innerHeight -
+        butonYukseklik -
+        kenarBosluk;
+
+    /*
+       Rastgele konum
+    */
+
+    const x =
+        kenarBosluk +
+        Math.random() *
+        Math.max(1, maxX - kenarBosluk);
+
+    const y =
+        kenarBosluk +
+        Math.random() *
+        Math.max(1, maxY - kenarBosluk);
+
     hayir.style.left = x + "px";
     hayir.style.top = y + "px";
-}
-
-
-// EVET
-
-function evetDedim() {
-
-    document.getElementById("soru1").style.display = "none";
-
-    document.getElementById("tarih").style.display = "block";
 
 }
 
 
-// TARİH
+/* =====================================================
+   3 — TARİH / SAAT
+   ===================================================== */
 
 function tarihSecildi() {
 
-    const tarih = document.getElementById("tarihSec").value;
-    const saat = document.getElementById("saatSec").value;
+    const tarih =
+        document.getElementById("tarihSec").value;
+
+    const saat =
+        document.getElementById("saatSec").value;
+
 
     if (!tarih || !saat) {
+
+        const mesaj =
+            document.getElementById("tarih");
+
+        /*
+           Küçük titreşim
+        */
+
+        mesaj.classList.remove("titreme");
+
+        void mesaj.offsetWidth;
+
+        mesaj.classList.add("titreme");
 
         alert("Önce tarih ve saat seç 😌");
 
         return;
     }
 
-    document.getElementById("tarih").style.display = "none";
 
-    document.getElementById("onay").style.display = "block";
+    document
+        .getElementById("tarih")
+        .classList.add("gizli");
+
+    document
+        .getElementById("onay")
+        .classList.remove("gizli");
 
 }
 
 
-// ÖDEME EKRANI
+/* =====================================================
+   4 — ÖDEME EKRANINA GEÇ
+   ===================================================== */
 
 function odemeEkrani() {
 
-    document.getElementById("onay").style.display = "none";
+    document
+        .getElementById("onay")
+        .classList.add("gizli");
 
-    document.getElementById("odeme").style.display = "block";
+    document
+        .getElementById("odeme")
+        .classList.remove("gizli");
 
 }
 
 
-// ÖDEME KONTROLÜ
+/* =====================================================
+   5 — FOTOĞRAF SAYISINI GÖSTER
+   ===================================================== */
+
+function fotoSayisiniGoster() {
+
+    const dosyalar =
+        document.getElementById("fotolar").files;
+
+    const sayi =
+        dosyalar.length;
+
+    const alan =
+        document.getElementById("fotoSayisi");
+
+
+    if (sayi === 0) {
+
+        alan.textContent =
+            "Henüz fotoğraf seçilmedi.";
+
+        return;
+    }
+
+
+    alan.textContent =
+        sayi + " fotoğraf seçildi. 📸";
+
+}
+
+
+/* =====================================================
+   6 — ÖDEME
+   ===================================================== */
 
 function odemeyiDene() {
 
     const dosyalar =
         document.getElementById("fotolar").files;
 
-    const sayi = dosyalar.length;
+    const sayi =
+        dosyalar.length;
 
 
-    // 10'DAN AZSA
+    /*
+       10'DAN AZ FOTOĞRAF
+    */
 
     if (sayi < 10) {
 
         const mesaj =
             document.getElementById("mesaj");
+
 
         mesaj.innerHTML = `
             ❌ İŞLEM REDDEDİLDİ<br>
@@ -360,6 +360,12 @@ function odemeyiDene() {
             </small>
         `;
 
+
+        /*
+           Uyarı animasyonunu
+           her tıklamada yeniden başlat
+        */
+
         mesaj.classList.remove("uyari");
 
         void mesaj.offsetWidth;
@@ -367,57 +373,91 @@ function odemeyiDene() {
         mesaj.classList.add("uyari");
 
 
-        // BİP SESİ
+        /*
+           POS BENZERİ BİP BİP
+        */
 
-        const audio =
-            new (window.AudioContext ||
-                 window.webkitAudioContext)();
+        try {
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+            const audio =
+                new AudioContext();
 
 
-        function bip(zaman, frekans) {
+            function bip(zaman, frekans) {
 
-            const oscillator =
-                audio.createOscillator();
+                const oscillator =
+                    audio.createOscillator();
 
-            const gain =
-                audio.createGain();
+                const gain =
+                    audio.createGain();
 
-            oscillator.type = "square";
 
-            oscillator.frequency.value =
-                frekans;
+                oscillator.type =
+                    "square";
 
-            gain.gain.setValueAtTime(
-                0.15,
-                zaman
+                oscillator.frequency.value =
+                    frekans;
+
+
+                gain.gain.setValueAtTime(
+                    0.15,
+                    zaman
+                );
+
+
+                gain.gain.exponentialRampToValueAtTime(
+                    0.001,
+                    zaman + 0.18
+                );
+
+
+                oscillator.connect(gain);
+
+                gain.connect(
+                    audio.destination
+                );
+
+
+                oscillator.start(zaman);
+
+                oscillator.stop(
+                    zaman + 0.18
+                );
+
+            }
+
+
+            bip(
+                audio.currentTime,
+                180
             );
 
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                zaman + 0.18
+            bip(
+                audio.currentTime + 0.25,
+                130
             );
 
-            oscillator.connect(gain);
+        } catch (hata) {
 
-            gain.connect(audio.destination);
+            console.log(
+                "Ses başlatılamadı:",
+                hata
+            );
 
-            oscillator.start(zaman);
-
-            oscillator.stop(zaman + 0.18);
         }
 
 
-        bip(audio.currentTime, 180);
+        /*
+           TELEFON TİTREŞİMİ
+        */
 
-        bip(
-            audio.currentTime + 0.25,
-            130
-        );
-
-
-        // TİTREŞİM
-
-        if (navigator.vibrate) {
+        if (
+            "vibrate" in navigator
+        ) {
 
             navigator.vibrate([
                 150,
@@ -427,11 +467,18 @@ function odemeyiDene() {
 
         }
 
+
         return;
+
     }
 
 
-    // 10 VE ÜZERİ
+    /*
+       ==============================================
+       10 VE ÜZERİ FOTOĞRAF
+       ==============================================
+    */
+
 
     document.getElementById("kutu").innerHTML = `
 
@@ -445,7 +492,7 @@ function odemeyiDene() {
                 Ödeme Başarılı! 🎉❤️
             </h1>
 
-            <p style="font-size:24px;">
+            <p class="basari-buyuk">
                 Buluşma kesinleşti! 🥰
             </p>
 
@@ -453,4 +500,117 @@ function odemeyiDene() {
                 ${sayi} fotoğraf ile ödeme kabul edildi. 📸
             </p>
 
-            <p
+            <p class="basari-son">
+                Görüşürüz ❤️
+            </p>
+
+        </div>
+
+    `;
+
+
+    /*
+       BAŞARI SESİ
+    */
+
+    try {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        const audio =
+            new AudioContext();
+
+
+        function basariSesi(
+            zaman,
+            frekans
+        ) {
+
+            const oscillator =
+                audio.createOscillator();
+
+            const gain =
+                audio.createGain();
+
+
+            oscillator.type =
+                "sine";
+
+            oscillator.frequency.value =
+                frekans;
+
+
+            gain.gain.setValueAtTime(
+                0.12,
+                zaman
+            );
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                zaman + 0.3
+            );
+
+
+            oscillator.connect(gain);
+
+            gain.connect(
+                audio.destination
+            );
+
+
+            oscillator.start(zaman);
+
+            oscillator.stop(
+                zaman + 0.3
+            );
+
+        }
+
+
+        basariSesi(
+            audio.currentTime,
+            523
+        );
+
+        basariSesi(
+            audio.currentTime + 0.18,
+            659
+        );
+
+        basariSesi(
+            audio.currentTime + 0.36,
+            784
+        );
+
+
+    } catch (hata) {
+
+        console.log(
+            "Başarı sesi başlatılamadı:",
+            hata
+        );
+
+    }
+
+
+    /*
+       BAŞARI TİTREŞİMİ
+    */
+
+    if (
+        "vibrate" in navigator
+    ) {
+
+        navigator.vibrate(200);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
