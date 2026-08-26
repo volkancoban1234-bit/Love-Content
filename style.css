@@ -1,0 +1,59 @@
+#mesaj {
+    color: #e91e63;
+    font-weight: bold;
+    min-height: 45px;
+    line-height: 1.5;
+}
+
+.uyari {
+    animation: sallan 0.45s ease;
+    color: #d60000 !important;
+}
+
+@keyframes sallan {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(-10px); }
+    40%  { transform: translateX(10px); }
+    60%  { transform: translateX(-7px); }
+    80%  { transform: translateX(7px); }
+    100% { transform: translateX(0); }
+}
+
+.basari {
+    animation: ortayaCik 0.6s ease;
+}
+
+.tik {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #4caf50;
+    color: white;
+    font-size: 55px;
+    line-height: 80px;
+    animation: buyu 0.5s ease;
+}
+
+@keyframes ortayaCik {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes buyu {
+    0% {
+        transform: scale(0);
+    }
+    70% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
